@@ -1,4 +1,5 @@
-import Layout from "../components/MyLayout";
+import Layout from "../components/Layout";
+import Content from "../components/Content";
 import Link from "next/link";
 
 function getPosts() {
@@ -19,37 +20,40 @@ const PostLink = ({ post }) => (
 
 export default function Blog() {
   return (
-    <Layout>
-      <h1>My Blog</h1>
-      <ul>
-        {getPosts().map(post => (
-          <PostLink key={post.id} post={post} />
-        ))}
-      </ul>
-      <style jsx>{`
-        h1,
-        a {
-          font-family: "Arial";
-        }
+    <>
+      <Content></Content>
+      <Layout>
+        <h1>My Blog</h1>
+        <ul>
+          {getPosts().map(post => (
+            <PostLink key={post.id} post={post} />
+          ))}
+        </ul>
+        <style jsx>{`
+          h1,
+          a {
+            font-family: "Arial";
+          }
 
-        ul {
-          padding: 0;
-        }
+          ul {
+            padding: 0;
+          }
 
-        li {
-          list-style: none;
-          margin: 5px 0;
-        }
+          li {
+            list-style: none;
+            margin: 5px 0;
+          }
 
-        a {
-          text-decoration: none;
-          color: blue;
-        }
+          a {
+            text-decoration: none;
+            color: blue;
+          }
 
-        a:hover {
-          opacity: 0.6;
-        }
-      `}</style>
-    </Layout>
+          a:hover {
+            opacity: 0.6;
+          }
+        `}</style>
+      </Layout>
+    </>
   );
 }
